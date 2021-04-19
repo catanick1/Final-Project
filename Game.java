@@ -311,9 +311,26 @@ exitButton.setVisible(true);
 
 }
 
-else if (ae.getActionCommand().equals("Leave Game"))
+else if (ae.getActionCommand().equals("Quit"))
 {
-System.exit(0);
+//System.exit(0);
+welcome.setVisible(true);
+welcome.setText("You ended the game with a score of " + score + ". Try again soon!" );
+
+enterName.setVisible(false);
+name.setVisible(false);
+nextButton.setVisible(false);
+nameField.setVisible(false);
+ask.setVisible(false);
+totalScore.setVisible(false);
+optionChoiceA.setVisible(false);
+optionChoiceB.setVisible(false);
+optionChoiceC.setVisible(false);
+optionChoiceD.setVisible(false);
+answer.setVisible(false);
+submitButton.setVisible(false);
+exitButton.setVisible(false);
+
 }
 
 else
