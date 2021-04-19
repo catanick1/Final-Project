@@ -114,8 +114,8 @@ group.add(optionChoiceD);
 
 enterName = new JButton("Enter Name");
 submitButton = new JButton("Submit Answer");
-nextButton = new JButton("Continue");
-exitButton = new JButton("Leave Game");
+nextButton = new JButton("Next Question");
+exitButton = new JButton("Quit");
 
 enterName.addActionListener(this);
 submitButton.addActionListener(this);
@@ -196,7 +196,7 @@ System.out.println(triviaQuestions.get(i).getOptionB());
 System.out.println(triviaQuestions.get(i).getOptionC());
 System.out.println(triviaQuestions.get(i).getOptionD());
 
- submitButton.setVisible(true);
+submitButton.setVisible(true);
 }
 
 else {
@@ -235,12 +235,14 @@ int optionD = 4;
 answer.setText("Correct! You earned 5 points");
 score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
+nextButton.setVisible(true);
 }
 else if (optionChoiceB.isSelected() && triviaQuestions.get(i).getCorrectAnswer() == 2)
 {
 answer.setText("Correct! You earned 5 points");
 score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
+nextButton.setVisible(true);
 }
 
  else if(optionChoiceC.isSelected()&& triviaQuestions.get(i).getCorrectAnswer() == 3 )
@@ -248,28 +250,32 @@ submitButton.setVisible(false);
 answer.setText("Correct! You earned 5 points");
 score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
+nextButton.setVisible(true);
 }
 
  else if (optionChoiceD.isSelected() && triviaQuestions.get(i).getCorrectAnswer() == 4)
 {
-answer.setText("Correct! You earned 5 points");
+answer.setText("Correct! You earned 5 points.");
 score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
+nextButton.setVisible(true);
 }
 
  else
 {
-answer.setText("incorrect.");
+answer.setText("Incorrect! you have earned 0 points.");
 submitButton.setVisible(false);
+nextButton.setVisible(true);
 }
 
  totalScore.setText("Total Points: " + score);
+ 
 }
 
-else if (ae.getActionCommand().equals("Continue"))
+else if (ae.getActionCommand().equals("Next Question"))
 {
 
- group.clearSelection();
+group.clearSelection();
 
 NextQuestion();
 triviaQuestions.get(i).getCorrectAnswer();
@@ -278,6 +284,8 @@ name.setVisible(false);
 nameField.setVisible(false);
 enterName.setVisible(false);
 welcome.setVisible(false);
+nextButton.setVisible(false);
+
 
  }
 
@@ -299,7 +307,6 @@ optionChoiceC.setVisible(true);
 optionChoiceD.setVisible(true);
 answer.setVisible(true);
 submitButton.setVisible(true);
-nextButton.setVisible(true);
 exitButton.setVisible(true);
 
 }
