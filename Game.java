@@ -32,7 +32,6 @@ public class Game implements ActionListener
 
   ArrayList <Question> triviaQuestions = new ArrayList<Question>(); 
 
-
 //Game constructor 
 Game(){
 String filename;
@@ -75,6 +74,7 @@ BufferedWriter output = new BufferedWriter(toWriteFile);
 output.flush();
 output.close();
 }
+
 catch (IOException excpt)
 {
 excpt.printStackTrace();
@@ -99,12 +99,10 @@ JFrame frame = new JFrame("Bearcat Trivia");
 frame.setLayout(new FlowLayout());
 frame.setSize(750, 350);
 
-
 optionChoiceA = new JRadioButton(triviaQuestions.get(0).getOptionA());
 optionChoiceB = new JRadioButton(triviaQuestions.get(0).getOptionB());
 optionChoiceC = new JRadioButton(triviaQuestions.get(0).getOptionC());
 optionChoiceD = new JRadioButton(triviaQuestions.get(0).getOptionD());
-
 
 group = new ButtonGroup();
 group.add(optionChoiceA);
@@ -112,7 +110,7 @@ group.add(optionChoiceB);
 group.add(optionChoiceC);
 group.add(optionChoiceD);
 
-enterName = new JButton("Enter Name");
+enterName = new JButton("Enter");
 submitButton = new JButton("Submit Answer");
 nextButton = new JButton("Next Question");
 exitButton = new JButton("Quit");
@@ -151,7 +149,6 @@ frame.add(submitButton);
 frame.add(nextButton);
 frame.add(exitButton);
 
-
 frame.setVisible(true);
 ask.setVisible(false);
 welcome.setVisible(false);
@@ -166,13 +163,6 @@ nextButton.setVisible(false);
 }
 
 int i = 0;
-
-/*
-
-@Uses to arraylist to transition to one question to another
-@ sets RadioButtons for next question
-
-*/
 
 void NextQuestion(){
 if (i < triviaQuestions.size()) {
@@ -200,25 +190,10 @@ submitButton.setVisible(true);
 }
 
 else {
-welcome.setText("GAME OVER");
-ask.setVisible(false);
-optionChoiceA.setVisible(false);
-optionChoiceB.setVisible(false);
-optionChoiceC.setVisible(false);
-optionChoiceD.setVisible(false);
-answer.setVisible(false);
-submitButton.setVisible(false);
-nextButton.setVisible(false);
-exitButton.setVisible(false);
-
- }
-
+totalScore.setText("Game over, your Total Score is: " + score);
 }
 
-/*@ask
-Allows functionality to RadioButtons,Labels,textfields and buttons.
-
-*/
+}
 
 public void actionPerformed(ActionEvent ae)
 {
@@ -237,7 +212,9 @@ score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
 nextButton.setVisible(true);
 }
+
 else if (optionChoiceB.isSelected() && triviaQuestions.get(i).getCorrectAnswer() == 2)
+
 {
 answer.setText("Correct! You earned 5 points");
 score += triviaQuestions.get(i).getUserScore();
@@ -268,8 +245,6 @@ submitButton.setVisible(false);
 nextButton.setVisible(true);
 }
 
- totalScore.setText("Total Points: " + score);
- 
 }
 
 else if (ae.getActionCommand().equals("Next Question"))
@@ -286,10 +261,9 @@ enterName.setVisible(false);
 welcome.setVisible(false);
 nextButton.setVisible(false);
 
+}
 
- }
-
-else if (ae.getActionCommand().equals("Enter Name"))
+else if (ae.getActionCommand().equals("Enter"))
 {
 
 String userName = nameField.getText();
@@ -313,7 +287,6 @@ exitButton.setVisible(true);
 
 else if (ae.getActionCommand().equals("Quit"))
 {
-//System.exit(0);
 welcome.setVisible(true);
 welcome.setText("You ended the game with a score of " + score + ". Try again soon!" );
 
@@ -331,13 +304,7 @@ answer.setVisible(false);
 submitButton.setVisible(false);
 exitButton.setVisible(false);
 
-}
 
-else
-{
-answer.setText("Please click submit or continue");
+  }
 }
-
-}
-
 }
