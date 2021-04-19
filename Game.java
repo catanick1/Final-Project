@@ -97,24 +97,14 @@ excpt.printStackTrace();
 
 JFrame frame = new JFrame("Bearcat Trivia");
 frame.setLayout(new FlowLayout());
-frame.setSize(500, 300);
+frame.setSize(750, 350);
 
-/*frame.getContentPane().setBackground(Color.BLACK); */
 
 optionChoiceA = new JRadioButton(triviaQuestions.get(0).getOptionA());
 optionChoiceB = new JRadioButton(triviaQuestions.get(0).getOptionB());
-optionChoiceC = new JRadioButton(triviaQuestions.get(0).getOptionB());
-optionChoiceD = new JRadioButton(triviaQuestions.get(0).getOptionB());
+optionChoiceC = new JRadioButton(triviaQuestions.get(0).getOptionC());
+optionChoiceD = new JRadioButton(triviaQuestions.get(0).getOptionD());
 
-//optionChoiceA.setBackground(Color.BLACK);
-//optionChoiceB.setBackground(Color.BLACK);
-//optionChoiceC.setBackground(Color.BLACK);
-//optionChoiceD.setBackground(Color.BLACK);
-
-//optionChoiceA.setForeground(Color.WHITE);
-//optionChoiceB.setForeground(Color.WHITE);
-//optionChoiceC.setForeground(Color.WHITE);
-//optionChoiceD.setForeground(Color.WHITE);
 
 group = new ButtonGroup();
 group.add(optionChoiceA);
@@ -122,7 +112,7 @@ group.add(optionChoiceB);
 group.add(optionChoiceC);
 group.add(optionChoiceD);
 
-enterName = new JButton("Enter Game");
+enterName = new JButton("Enter Name");
 submitButton = new JButton("Submit Answer");
 nextButton = new JButton("Continue");
 exitButton = new JButton("Leave Game");
@@ -132,37 +122,19 @@ submitButton.addActionListener(this);
 nextButton.addActionListener(this);
 exitButton.addActionListener(this);
 
-//exitButton.setBackground(Color.RED);
-//exitButton.setForeground(Color.WHITE);
-//submitButton.setBackground(Color.GREEN);
-//nextButton.setBackground(Color.GRAY);
-//nextButton.setForeground(Color.WHITE);
-
 nameField = new JTextField(10);
 nameField.setActionCommand("myTF");
 nameField.addActionListener(this);
 
 name = new JLabel("Enter your name here: ");
-//name.setForeground(Color.WHITE);
-//name.setFont(new Font("Monospaced", Font.ITALIC, 30));
 
 welcome = new JLabel("Welcome to Bearcat Trivia");
 
-//welcome.setFont(new Font("SanSerif", Font.BOLD, 30));
-//welcome.setForeground(Color.BLUE);
-
 totalScore = new JLabel("Total Points: " + score);
 
-//totalScore.setFont(new Font("Monospaced", Font.ITALIC, 20));
-totalScore.setForeground(Color.GREEN);
-
-//JLabel html = new JLabel("<html><br><br>I am <font color='green' size='30'>blue</font></html>");
-
-ask = new JLabel(triviaQuestions.get(0).getQuestion() + "This question is worth " + userScore + " points.");
-//ask.setForeground(Color.WHITE);
+ask = new JLabel(triviaQuestions.get(0).getQuestion() + " This question is worth " + userScore + " points.");
 
 answer = new JLabel("");
-//answer.setForeground(Color.ORANGE);
 
 frame.add(name);
 frame.add(nameField);
@@ -312,7 +284,7 @@ welcome.setVisible(false);
 else if (ae.getActionCommand().equals("Enter Name"))
 {
 
- String userName = nameField.getText();
+String userName = nameField.getText();
 welcome.setText("Welcome to Bearcat Trivia, " + userName + "!" );
 
 name.setVisible(false);

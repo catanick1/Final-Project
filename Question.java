@@ -35,13 +35,13 @@ String getOptionA(){
   return optionA;
 }
 String getOptionB(){
-  return optionA;
+  return optionB;
 }
 String getOptionC(){
-  return optionA;
+  return optionC;
 }
 String getOptionD(){
-  return optionA;
+  return optionD;
 }
 
 int getCorrectAnswer(){
