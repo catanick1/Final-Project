@@ -39,7 +39,7 @@ String filename;
 FileReader myFile;
 
 filename = "trivia.txt";
-String question = "", optionA = "", optionB = "", optionC = "", optionD = "", correctAnswer = "", score = "";
+String question = "", optionA = "", optionB = "", optionC = "", optionD = "", correctAnswer = "", userScore = "";
  
 try
 {
@@ -54,19 +54,19 @@ optionB = reader.readLine();
 optionC = reader.readLine();
 optionD = reader.readLine();
 correctAnswer = reader.readLine();
-score = reader.readLine();
+userScore = reader.readLine();
 
-Question theQuestion = new Question(question, optionA, optionB, optionC, optionD, Integer.parseInt(correctAnswer), Integer.parseInt(score));
+Question theQuestion = new Question(question, optionA, optionB, optionC, optionD, Integer.parseInt(correctAnswer), Integer.parseInt(userScore));
 
- triviaQuestions.add(theQuestion);
+triviaQuestions.add(theQuestion);
 }
 reader.close();
 }
 
- catch (IOException exception) {
+catch (IOException exception) {
 System.out.println("An error occurred: " + exception);}
 
- FileWriter toWriteFile;
+FileWriter toWriteFile;
 try
 {
 toWriteFile = new FileWriter("score.txt");
@@ -84,7 +84,7 @@ try
 {
 toWriteFile = new FileWriter("score.txt");
 BufferedWriter output = new BufferedWriter(toWriteFile);
-output.write("player Score =" + score);
+output.write("player Score =" + userScore);
 output.newLine();
 
 output.flush();
@@ -106,15 +106,15 @@ optionChoiceB = new JRadioButton(triviaQuestions.get(0).getOptionB());
 optionChoiceC = new JRadioButton(triviaQuestions.get(0).getOptionB());
 optionChoiceD = new JRadioButton(triviaQuestions.get(0).getOptionB());
 
-optionChoiceA.setBackground(Color.BLACK);
-optionChoiceB.setBackground(Color.BLACK);
-optionChoiceC.setBackground(Color.BLACK);
-optionChoiceD.setBackground(Color.BLACK);
+//optionChoiceA.setBackground(Color.BLACK);
+//optionChoiceB.setBackground(Color.BLACK);
+//optionChoiceC.setBackground(Color.BLACK);
+//optionChoiceD.setBackground(Color.BLACK);
 
-optionChoiceA.setForeground(Color.WHITE);
-optionChoiceB.setForeground(Color.WHITE);
-optionChoiceC.setForeground(Color.WHITE);
-optionChoiceD.setForeground(Color.WHITE);
+//optionChoiceA.setForeground(Color.WHITE);
+//optionChoiceB.setForeground(Color.WHITE);
+//optionChoiceC.setForeground(Color.WHITE);
+//optionChoiceD.setForeground(Color.WHITE);
 
 group = new ButtonGroup();
 group.add(optionChoiceA);
@@ -132,37 +132,37 @@ submitButton.addActionListener(this);
 nextButton.addActionListener(this);
 exitButton.addActionListener(this);
 
-exitButton.setBackground(Color.RED);
-exitButton.setForeground(Color.WHITE);
-submitButton.setBackground(Color.GREEN);
-nextButton.setBackground(Color.GRAY);
-nextButton.setForeground(Color.WHITE);
+//exitButton.setBackground(Color.RED);
+//exitButton.setForeground(Color.WHITE);
+//submitButton.setBackground(Color.GREEN);
+//nextButton.setBackground(Color.GRAY);
+//nextButton.setForeground(Color.WHITE);
 
 nameField = new JTextField(10);
 nameField.setActionCommand("myTF");
 nameField.addActionListener(this);
 
 name = new JLabel("Enter your name here: ");
-name.setForeground(Color.WHITE);
-name.setFont(new Font("Monospaced", Font.ITALIC, 30));
+//name.setForeground(Color.WHITE);
+//name.setFont(new Font("Monospaced", Font.ITALIC, 30));
 
 welcome = new JLabel("Welcome to Bearcat Trivia");
 
-welcome.setFont(new Font("SanSerif", Font.BOLD, 30));
-welcome.setForeground(Color.BLUE);
+//welcome.setFont(new Font("SanSerif", Font.BOLD, 30));
+//welcome.setForeground(Color.BLUE);
 
 totalScore = new JLabel("Total Points: " + score);
 
-totalScore.setFont(new Font("Monospaced", Font.ITALIC, 20));
+//totalScore.setFont(new Font("Monospaced", Font.ITALIC, 20));
 totalScore.setForeground(Color.GREEN);
 
-JLabel html = new JLabel("<html><br><br>I am <font color='green' size='30'>blue</font></html>");
+//JLabel html = new JLabel("<html><br><br>I am <font color='green' size='30'>blue</font></html>");
 
-ask = new JLabel(triviaQuestions.get(0).getQuestion());
-ask.setForeground(Color.WHITE);
+ask = new JLabel(triviaQuestions.get(0).getQuestion() + "This question is worth " + userScore + " points.");
+//ask.setForeground(Color.WHITE);
 
 answer = new JLabel("");
-answer.setForeground(Color.ORANGE);
+//answer.setForeground(Color.ORANGE);
 
 frame.add(name);
 frame.add(nameField);
@@ -261,27 +261,27 @@ int optionD = 4;
  if (optionChoiceA.isSelected() && triviaQuestions.get(i).getCorrectAnswer() == 1)
 {
 answer.setText("Correct! You earned 5 points");
-score += triviaQuestions.get(i).getScore();
+score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
 }
 else if (optionChoiceB.isSelected() && triviaQuestions.get(i).getCorrectAnswer() == 2)
 {
 answer.setText("Correct! You earned 5 points");
-score += triviaQuestions.get(i).getScore();
+score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
 }
 
  else if(optionChoiceC.isSelected()&& triviaQuestions.get(i).getCorrectAnswer() == 3 )
 {
 answer.setText("Correct! You earned 5 points");
-score += triviaQuestions.get(i).getScore();
+score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
 }
 
  else if (optionChoiceD.isSelected() && triviaQuestions.get(i).getCorrectAnswer() == 4)
 {
 answer.setText("Correct! You earned 5 points");
-score += triviaQuestions.get(i).getScore();
+score += triviaQuestions.get(i).getUserScore();
 submitButton.setVisible(false);
 }
 
@@ -301,11 +301,15 @@ else if (ae.getActionCommand().equals("Continue"))
 
 NextQuestion();
 triviaQuestions.get(i).getCorrectAnswer();
-triviaQuestions.get(i).getScore();
+triviaQuestions.get(i).getUserScore();
+name.setVisible(false);
+nameField.setVisible(false);
+enterName.setVisible(false);
+welcome.setVisible(false);
 
  }
 
-else if (ae.getActionCommand().equals("Enter Game"))
+else if (ae.getActionCommand().equals("Enter Name"))
 {
 
  String userName = nameField.getText();
@@ -326,7 +330,7 @@ submitButton.setVisible(true);
 nextButton.setVisible(true);
 exitButton.setVisible(true);
 
- }
+}
 
 else if (ae.getActionCommand().equals("Leave Game"))
 {

@@ -11,7 +11,7 @@ class Question {
   public String optionC;
   public String optionD;
   public int correctAnswer;
-  public int score;
+  public int userScore;
 
 // constructor to set parameters
 
@@ -22,7 +22,7 @@ Question(String theQuestion, String aOptionA, String aOptionB, String aOptionC, 
   optionC = aOptionC;
   optionD = aOptionD;
   correctAnswer = theCorrectAnswer;
-  score = theScore;
+  userScore = theScore;
 }
 
 //accessor method used to give the user the question and answer options as well as show the score
@@ -48,7 +48,7 @@ int getCorrectAnswer(){
   return correctAnswer;
 }
 
-int getScore(){
-  return score;
+int getUserScore(){
+  return userScore;
 }
 }
